@@ -26,7 +26,7 @@ authController.post('/register', isGuest, async (req, res) => {
         res.redirect('/');
     } catch (err) {
         const error = getErrorMessage(err)
-        res.render('auth/register', { title: 'Register Page', username, email, error });
+        res.render('auth/register', { title: 'Register Page', username, email, phoneNumber, error });
     }
 });
 
@@ -50,17 +50,13 @@ authController.post('/login', isGuest, async (req, res) => {
 
     } catch (err) {
         const error = getErrorMessage(err)
-
         res.render('auth/login', { title: 'Login Page', email, error })
     }
 
     authController.get('/logout', isAuth, (req, res) => {
         res.clearCookie(AUTH_COOKIE_NAME);
-
         res.redirect('/');
     });
-
-
 });
 
 // Exporting the auth controller:
