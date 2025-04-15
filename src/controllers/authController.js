@@ -15,11 +15,11 @@ authController.get('/register', isGuest, (req, res) => {
 
 authController.post('/register', isGuest, async (req, res) => {
     // Get input:
-    const { email, username, password, rePassword } = req.body;
+    const { email, username, password, phoneNumber, rePassword } = req.body;
     
     // Call authService register:
     try {
-        const token = await authService.register(username, email, password, rePassword);
+        const token = await authService.register(username, email, password, phoneNumber, rePassword);
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
 
         // Redirect to login

@@ -11,15 +11,24 @@ const SALT_ROUNDS = 10;
 const userSchema = new Schema({
     username: {
         type: String,
-        required: [true, 'Username is required!']
+        required: [true, 'Username is required.'],
+        minlength: [2, 'Username must be at least 2 characters long!']
     },
     email: {
         type: String,
-        required: [true, 'Email is required!']
+        required: [true, 'Email is required.'],
+        unique: true,
+        match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Invalid email format.']
+    },
+    phoneNumber: {
+        type: String,
+        required: [true, 'Phone number is required.'],
+        match: [/^\+?\d{7,15}$/, 'Phone number must be between 7 and 15 digits!']
     },
     password: {
-        type: String,
-        required: [true, 'Password is required!']
+        type: String, 
+        required: [true, 'Password is required.'],
+        match: [/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)/, 'Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number!'],
     },
 });
 

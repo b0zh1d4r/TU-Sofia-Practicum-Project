@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 
 // Creating an object that will save all our function:
 const authService = {
-    async register(username, email, password, rePassword) {
+    async register(username, email, phoneNumber, password, rePassword) {
         const user = await User.findOne({ $or: [{ email }, { username }] });
 
         if (password !== rePassword) {
@@ -19,6 +19,7 @@ const authService = {
         const newUser = await User.create({
             username,
             email,
+            phoneNumber,
             password
         });
 
@@ -49,6 +50,7 @@ const authService = {
         const payload = { // Payload is the information that we want to save in the token.
             _id: user._id,
             email: user.email,
+            phoneNumber: user.phoneNumber,
             username: user.username
         }
 
