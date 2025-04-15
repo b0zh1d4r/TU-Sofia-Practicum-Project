@@ -5,10 +5,10 @@ import bcrypt from 'bcrypt';
 
 // Creating an object that will save all our function:
 const authService = {
-    async register(username, email, phoneNumber, password, rePassword) {
+    async register(username, email, phoneNumber, password, repeatPassword) {
         const user = await User.findOne({ $or: [{ email }, { username }] });
 
-        if (password !== rePassword) {
+        if (password !== repeatPassword) {
             throw new Error('Password mismatch!');
         }
 

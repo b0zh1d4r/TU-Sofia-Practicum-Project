@@ -30,10 +30,10 @@
                 {{#if isAuthenticated}}
                 <li><a href="/list">List</a></li>
                 <li><a href="/profile">Profile</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
                 {{else}}
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/auth/register">Register</a></li>
                 {{/if}}
             </ul>
         </div>
@@ -42,7 +42,7 @@
     {{#if error}}
     <div class="notification-container">
         <div class="notification error" id="errorNotification">
-            <span class="message" onclick=closeNotification()>Something went wrong. Please try again!</span>
+            <span class="message" onclick="closeNotification()">{{error}}</span>
         </div>
     </div>
     {{/if}}
@@ -79,15 +79,15 @@
             </li>
 
             <li>
-                <a href="/logout">Logout</a>
+                <a href="/auth/logout">Logout</a>
             </li>
             {{else}}
             <li>
-                <a href="/login">Login</a>
+                <a href="/auth/login">Login</a>
             </li>
 
             <li>
-                <a href="/register">Register</a>
+                <a href="/auth/register">Register</a>
             </li>
             {{/if}}
         </ul>

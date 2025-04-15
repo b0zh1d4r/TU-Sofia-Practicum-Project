@@ -15,11 +15,11 @@ authController.get('/register', isGuest, (req, res) => {
 
 authController.post('/register', isGuest, async (req, res) => {
     // Get input:
-    const { email, username, password, phoneNumber, rePassword } = req.body;
-    
+    const { username, email, phoneNumber, password, repeatPassword } = req.body;
+
     // Call authService register:
     try {
-        const token = await authService.register(username, email, password, phoneNumber, rePassword);
+        const token = await authService.register(username, email, phoneNumber, password, repeatPassword);
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
 
         // Redirect to login
@@ -54,11 +54,11 @@ authController.post('/login', isGuest, async (req, res) => {
         res.render('auth/login', { title: 'Login Page', email, error })
     }
 
-authController.get('/logout', isAuth, (req, res) => {
-    res.clearCookie(AUTH_COOKIE_NAME);
+    authController.get('/logout', isAuth, (req, res) => {
+        res.clearCookie(AUTH_COOKIE_NAME);
 
-    res.redirect('/');
-});
+        res.redirect('/');
+    });
 
 
 });
