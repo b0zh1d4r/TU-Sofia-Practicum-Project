@@ -1,0 +1,122 @@
+/* !Profile Start */
+header {
+    background-color: #7AB730;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 48px;
+    letter-spacing: 2px;
+}
+
+.content {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #7AB730;
+    text-align: center;
+}
+
+.user-info {
+    background-color: #f4f4f4;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.user-info p {
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+.highlight {
+    color: #7AB730;
+    font-weight: bold;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.product-card {
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+    color: #7AB730;
+    font-size: 22px;
+}
+
+.product-card .price {
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-card .category {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.readMore-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 16px;
+    background-color: #7AB730;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.readMore-btn:hover {
+    background-color: #689e2e;
+}
+
+@media (max-width: 880px) {
+    header h1 {
+        font-size: 36px;
+    }
+
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+}
+/* !Profile End */

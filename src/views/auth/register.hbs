@@ -1,15 +1,27 @@
-<div class="register-box">
-    <h1>Register</h1>
-    <form method="POST">
-        <label>Username</label>
-        <input type="text" name="username" placeholder="Username.." value="{{username}}">
-        <label>Email</label>
-        <input type="text" name="email" placeholder="Email.." value="{{email}}">
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password..">
-        <label>Confirm Password</label>
-        <input type="password" name="rePassword" placeholder="Confirm Password..">
-        <input type="submit" value="Submit">
+<header>
+    <h1>Create Your Zoodora Account</h1>
+</header>
+
+<div class="content">
+    <h2 class="section-title">Register to Join the Pet World 🐾</h2>
+    <form action="/register" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter username" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="Enter email address" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+        <label for="repeatPassword">Repeat Password:</label>
+        <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat your password" required>
+
+        <button type="submit">Register</button>
     </form>
-    <p>Already have an account? <a href="/auth/login">Login here</a></p>
+
+    <p class="login-link">Already have an account? <a href="/auth/login">Login here</a></p>
 </div>

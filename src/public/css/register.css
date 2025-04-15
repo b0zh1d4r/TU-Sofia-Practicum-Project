@@ -1,63 +1,90 @@
-.register-box {
+/* !Register Start */
+header {
+    background-color: #7AB730;
     color: white;
-    width: 360px;
-    height: 500px;
-    margin: auto;
-    background-color: #dbd1c1;
-    border: 2px solid black;
-    border-radius: 20px;
-    color: black;
-}
-
-.register-box h1 {
-    text-align: center;
-    padding-top: 15px;
-}
-
-.register-box h4 {
-    margin-top: 10px;
+    padding: 40px 20px;
     text-align: center;
 }
 
-.register-box form {
-    width: 300px;
-    margin-left: 20px;
+header h1 {
+    margin: 0;
+    font-size: 48px;
+    letter-spacing: 2px;
 }
 
-.register-box form label {
+.content {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+    line-height: 1.8;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #7AB730;
+}
+
+form {
+    background-color: #f4f4f4;
+    padding: 30px;
     display: flex;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-size: 18px;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-.register-box form input {
-    width: 320px;
-    height: 30px;
-    padding-left: 7px;
-    border: none;
-    border: 1px solid gray;
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    outline: none;
+    font-size: 16px;
 }
 
-.register-box input[type="submit"] {
-    width: 320px;
-    height: 35px;
-    margin-top: 30px;
-    border: none;
-    background-color: #D1491C;
+button {
+    background-color: #7AB730;
     color: white;
-    font-size: 15px;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.register-box p {
+button:hover {
+    background-color: #689e2e;
+}
+
+.login-link {
     text-align: center;
-    padding-top: 20px;
-    font-size: 15px;
-
+    margin-top: 20px;
+    font-size: 16px;
+    color: #000;
 }
 
-.register-box p>a {
-    color: #D1491C;
+.login-link a {
+    color: #7AB730;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
+
+.login-link a:hover {
+    color: #5c901f;
+}
+
+@media (max-width: 880px) {
+    header h1 {
+        font-size: 36px;
+    }
+}
+/* !Register End */

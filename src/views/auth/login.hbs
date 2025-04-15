@@ -1,11 +1,20 @@
-<div class="login-box">
-    <h1>Login</h1>
-    <form method="POST">
-        <label>Email</label>
-        <input type="text" name="email" placeholder="Email.." value="{{email}}">
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password..">
-        <input type="submit" value="Submit">
+<header>
+    <h1>Welcome Back to Zoodora</h1>
+</header>
+
+<div class="content">
+    <h2 class="section-title">Login to Your Account:</h2>
+    <form action="/login" method="POST">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <button type="submit">Login</button>
     </form>
-    <p>Not have an account? <a href="/auth/register">Register here</a></p>
+
+    <p style="text-align:center; margin-top: 20px;">
+        Don't have an account? <a href="/register" style="color:#7AB730; font-weight: bold;">Register here</a>
+    </p>
 </div>

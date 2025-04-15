@@ -1,0 +1,191 @@
+/* !Error Page Start */
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.error-wrapper {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.error-wrapper {
+    text-align: center;
+    padding: 40px;
+    max-width: 600px;
+}
+
+.error-content h1 {
+    font-size: 64px;
+    color: #7AB730;
+    margin-bottom: 10px;
+}
+
+.error-content h2 {
+    font-size: 28px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.error-content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.illustration {
+    width: 250px;
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn.green {
+    background-color: #7AB730;
+    color: white;
+}
+
+.btn.green:hover {
+    background-color: #689e2e;
+}
+
+.btn.black {
+    background-color: #000;
+    color: white;
+}
+
+.btn.black:hover {
+    background-color: #222;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .error-content h1 {
+        font-size: 48px;
+    }
+
+    .error-content h2 {
+        font-size: 22px;
+    }
+
+    .illustration {
+        width: 180px;
+    }
+}
+
+/* !Error Page End */
+
+/* !Error Notifcation Start */
+.notification-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    color: #000;
+    border-left: 6px solid #7AB730;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    padding: 16px 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 16px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification.error {
+    border-left-color: red;
+}
+
+.notification .icon {
+    margin-right: 12px;
+    font-size: 22px;
+}
+
+.notification .message {
+    flex: 1;
+}
+
+.notification .close-btn {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 8px;
+    transition: color 0.2s ease;
+}
+
+.notification .close-btn:hover {
+    color: red;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .notification-container {
+        right: 40px;
+    }
+
+    .notification {
+        font-size: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .notification .close-btn {
+        align-self: flex-end;
+    }
+}
+
+/* !Error Notification End */

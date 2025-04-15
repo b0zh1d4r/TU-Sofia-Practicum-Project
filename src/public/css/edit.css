@@ -1,98 +1,75 @@
-main {
-    padding-top: 20px;
-}
-
-#edit-container {
+/* !Edit Start */
+header {
+    background-color: #7AB730;
     color: white;
-    width: 360px;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-    background-color: #dbd1c1;
-    border: 2px solid black;
-    border-radius: 20px;
-    color: black;
-}
-
-#edit-container h1 {
+    padding: 40px 20px;
     text-align: center;
-    padding-top: 15px;
-    color: black;
-
 }
 
-#edit-container h4 {
-    margin-top: 10px;
-    text-align: center;
-    color: #ff960b;
-}
-
-#edit-container form {
-    width: 300px;
-}
-
-#edit-container form label {
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-size: 18px;
-}
-
-#edit-container form input {
-    width: 320px;
-    height: 30px;
-    padding-left: 7px;
-    border: none;
-    border: 1px solid gray;
-    border-radius: 8px;
-    outline: none;
-    background-color: whitesmoke;
-}
-
-#edit-container input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+header h1 {
     margin: 0;
+    font-size: 48px;
+    letter-spacing: 2px;
 }
 
-#edit-container input[type=number] {
-    -moz-appearance: textfield;
+.content {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+    line-height: 1.8;
 }
 
-#edit-container form textarea {
-    width: 320px;
-    height: 80px;
-    padding-left: 7px;
-    border: none;
-    border: 1px solid gray;
-    border-radius: 8px;
-    outline: none;
-    background-color: whitesmoke;
-    resize: none;
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #7AB730;
 }
 
-#edit-container select {
-    outline: 0;
-    border: 0;
-    box-shadow: none;
-    flex: 1;
-    padding: 0 1em;
-    cursor: pointer;
-    height: 20px;
+form {
+    background-color: #f4f4f4;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
     font-weight: bold;
-    border-radius: 20px;
-    width: 320px;
-    background-color: whitesmoke;
-    color: black;
 }
 
-#edit-container input[type="submit"] {
-    width: 320px;
-    height: 35px;
-    margin-top: 20px;
-    border: none;
-    background-color: #D1491C;
-    color: white;
-    font-size: 15px;
-    margin-bottom: 30px;
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
 }
+
+button {
+    background-color: #7AB730;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #689e2e;
+}
+
+@media (max-width: 880px) {
+    header h1 {
+        font-size: 36px;
+    }
+}
+/* !Edit End */

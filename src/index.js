@@ -12,7 +12,7 @@ const app = express();
 
 // Setup database:
 const url = 'mongodb://localhost:27017';
-mongoose.connect(url, { dbName: 'volcanoes' }) // TODO: Change database name.
+mongoose.connect(url, { dbName: 'Zoodora' })
     .then(() => console.log('Connected to database!'))
     .catch((err) => console.log(`Failed to connect to database: ${err}`));
  
@@ -31,6 +31,7 @@ app.set('view engine', 'hbs');
 // * Setup Express:
 // For every path that start with /static, use the static middleware that searches on /public:
 app.use('/static', express.static('src/public'));
+app.use('/utils', express.static('src/utils'));
 
 // Setting the app to use urlencoded (read form data):
 app.use(express.urlencoded({ extended: false }));

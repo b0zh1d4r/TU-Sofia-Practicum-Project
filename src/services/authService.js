@@ -9,7 +9,7 @@ const authService = {
         const user = await User.findOne({ $or: [{ email }, { username }] });
 
         if (password !== rePassword) {
-            throw new Error('Password missmatch!');
+            throw new Error('Password mismatch!');
         }
 
         if (user) {
