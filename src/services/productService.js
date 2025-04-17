@@ -12,8 +12,11 @@ const productService = {
     create(productData, userId) {
         return Product.create({ ...productData, owner: userId });
     },
-    async buy(productId, userId) {
+    buy(productId, userId) {
         return Product.findByIdAndUpdate(productId, { $push: { buyList: userId }}); 
+    },
+    remove(productId) {
+        return Product.findByIdAndDelete(productId);
     }
 };
 

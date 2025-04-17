@@ -56,6 +56,20 @@ productController.get('/:productId/buy', async (req, res) => {
     }
 });
 
+productController.get('/:productId/delete', async (req, res) => {
+    const productId = req.params.productId;
+
+    try {
+        await productService.remove(productId);
+
+        res.redirect('/products');
+    } catch (err) {
+        console.log(err);
+        
+        res.redirect(`/products/${productId}/details`);
+    }
+});
+
 // Exporting the product controller:
 export default productController;
 
