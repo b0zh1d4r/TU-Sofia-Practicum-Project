@@ -39,7 +39,7 @@ userSchema.pre('save', async function () {
     this.password = hash;
 });
 
-// Creating the User model:
+// Creating the user model:
 const User = model('User', userSchema);
 
 // Exporting the model:

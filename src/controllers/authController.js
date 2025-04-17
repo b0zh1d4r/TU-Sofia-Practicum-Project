@@ -22,7 +22,7 @@ authController.post('/register', isGuest, async (req, res) => {
         const token = await authService.register(username, email, phoneNumber, password, repeatPassword);
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
 
-        // Redirect to login
+        // Redirect to home:
         res.redirect('/');
     } catch (err) {
         const error = getErrorMessage(err)
@@ -52,11 +52,11 @@ authController.post('/login', isGuest, async (req, res) => {
         const error = getErrorMessage(err)
         res.render('auth/login', { title: 'Login Page', email, error })
     }
+});
 
-    authController.get('/logout', isAuth, (req, res) => {
-        res.clearCookie(AUTH_COOKIE_NAME);
-        res.redirect('/');
-    });
+authController.get('/logout', isAuth, (req, res) => {
+    res.clearCookie(AUTH_COOKIE_NAME);
+    res.redirect('/');
 });
 
 // Exporting the auth controller:

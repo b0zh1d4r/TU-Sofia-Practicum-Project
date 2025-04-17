@@ -1,0 +1,21 @@
+<header>
+    <h1>Our Products</h1>
+    <p>Explore the world of pet happiness at Zoodora.</p>
+</header>
+
+<div class="content">
+    <h2 class="section-title">Top Picks for Your Pet:</h2>
+
+    <div class="feature-box">
+        {{#each products}}
+        <div class="feature">
+            <img src="{{imageUrl}}" alt="Product Image">
+            <h3>{{name}}</h3>
+            <p class="price">${{price}}</p>
+            <a href="/products/{{_id}}/details" class="btn">Read More</a>
+        </div>
+        {{else}}
+        <h2 class="section-title">No Products Available yet.</h2>
+        {{/each}}
+    </div>
+</div>

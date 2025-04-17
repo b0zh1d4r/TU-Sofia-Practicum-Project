@@ -28,7 +28,7 @@
                 <li><a href="/about">About</a></li>
                 <li><a href="/products">Products</a></li>
                 {{#if isAuthenticated}}
-                <li><a href="/list">List</a></li>
+                <li><a href="/products/create">Create</a></li>
                 <li><a href="/profile">Profile</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
                 {{else}}
@@ -71,7 +71,7 @@
             </li>
             {{#if isAuthenticated}}
             <li>
-                <a href="/list">List</a>
+                <a href="/products/create">Create</a>
             </li>
 
             <li>

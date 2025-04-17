@@ -3,7 +3,7 @@ import jwt from "../lib/jwt.js";
 import User from "../models/User.js";
 import bcrypt from 'bcrypt';
 
-// Creating an object that will save all our function:
+// Creating an object that will save all our functions:
 const authService = {
     async register(username, email, phoneNumber, password, repeatPassword) {
         const user = await User.findOne({ $or: [{ email }, { username }] });

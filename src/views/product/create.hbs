@@ -1,0 +1,29 @@
+<header>
+    <h1>Create a Product Listing</h1>
+</header>
+
+<div class="content">
+    <h2 class="section-title">Add a New Pet Product:</h2>
+    <form method="POST">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter product name" value={{product.name}}>
+
+        <label for="category">Category:</label>
+        <select id="category" name="productCategory">
+            {{#each productCategories}}
+            <option value="{{value}}" {{selected}}>{{label}}</option>
+            {{/each}}
+        </select>
+
+        <label for="price">Price (USD):</label>
+        <input type="price" id="price" name="price" placeholder="Enter product price" value={{product.price}}>
+
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" id="imageUrl" name="imageUrl" placeholder="Enter image URL" value={{product.imageUrl}}>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" placeholder="Enter product description" value={{product.description}}></textarea>
+
+        <button type="submit">Create Product</button>
+    </form>
+</div>

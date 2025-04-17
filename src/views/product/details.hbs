@@ -1,0 +1,34 @@
+<header>
+    <h1>Product Details</h1>
+</header>
+
+<div class="content">
+    <div class="product-container">
+        <div class="product-image">
+            <img src="{{product.imageUrl}}" alt="Product Image" />
+        </div>
+        <div class="product-info">
+            <h2 class="product-name">{{product.name}}</h2>
+            <p class="product-price">${{product.price}}</p>
+            <p class="product-category"><strong>Category:</strong> {{product.productCategory}}</p>
+            <p class="product-description">
+                {{product.description}}
+            </p>
+
+            {{#if isAuthenticated}}
+                <div class="action-buttons">
+                    {{#if isOwner}}
+                        <a href="/products/{{product._id}}/edit" class="edit-btn">Edit</a>
+                        <a href="/products/{{product._id}}/delete" class="delete-btn">Delete</a>
+                    {{else}}
+                        {{#if hasBought}}
+                            <a href="#" class="buy-btn">You have already bought this product.</a>
+                        {{else}}
+                            <a href="/products/{{product._id}}/buy" class="buy-btn">Buy Now</a>
+                        {{/if}}
+                    {{/if}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
