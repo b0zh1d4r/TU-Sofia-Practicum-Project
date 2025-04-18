@@ -86,6 +86,12 @@ header h1 {
     background-color: #689e28;
 }
 
+.center-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 880px) {
     header h1 {

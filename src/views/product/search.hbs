@@ -4,22 +4,26 @@
 
 <div class="content">
     <div class="search-bar">
-        <input type="text" placeholder="Search for food, toys..." />
-        <button class="btn">Search</button>
+        <form class="search-wrapper cf" method="get">
+            <input id="search-input" type="text" name="name" placeholder="Search for food, toys..." required />
+            <div class="center-button">
+                <button type="submit" class="btn">Search</button>
+            </div>
+        </form>
     </div>
 
     <h2 class="section-title">Search Results:</h2>
 
     <div class="feature-box">
-        {{#if products}}
+        {{#each products}}
         <div class="feature">
-            <img src="{{imageUrl}}" alt="{{name}}">
+            <img src="{{imageUrl}}" alt="{{name}}" />
             <h3>{{name}}</h3>
             <p class="price">${{price}}</p>
             <a href="/products/{{_id}}/details" class="btn">Read More</a>
         </div>
         {{else}}
-        <h2 class="section-title">No Search Results.</h2>
-        {{/if}}
+        <h2 class="section-title">No Results.</h2>
+        {{/each}}
     </div>
 </div>

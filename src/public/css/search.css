@@ -1,10 +1,4 @@
 /* !Search Page Start */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff;
-    color: #000;
-}
 
 header {
     background-color: #7AB730;
@@ -34,6 +28,14 @@ header h1 {
     flex-wrap: wrap;
 }
 
+.search-bar form {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
 .search-bar input {
     padding: 12px 20px;
     border: 2px solid #7AB730;
@@ -41,6 +43,27 @@ header h1 {
     font-size: 16px;
     width: 300px;
     max-width: 100%;
+}
+
+.search-bar .center-button {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar button {
+    background-color: #7AB730;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.search-bar button:hover {
+    background-color: #689e28;
 }
 
 .section-title {
@@ -152,4 +175,5 @@ header h1 {
     }
 }
 
+/* !Search Page End */
 /* !Search Page End */

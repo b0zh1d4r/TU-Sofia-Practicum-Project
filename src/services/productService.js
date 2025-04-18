@@ -3,8 +3,14 @@ import Product from "../models/Product.js";
 
 // Creating an object that will save all our functions:
 const productService = {
-    getAll() {
-        return Product.find();
+    getAll(filter = {}) {
+        const query = Product.find();
+
+        if (filter.name) {
+            query.find({ name: { $regex: filter.name, $options: 'i' } });
+        }
+
+        return query;   
     },
     getOne(productId) {
         return Product.findById(productId);
