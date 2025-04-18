@@ -20,7 +20,10 @@ const productService = {
     },
     edit(productId, productData) {
         return Product.findByIdAndUpdate(productId, productData, { runValidators: true });
-    }
+    },
+    getMyCreatedProducts(userId) {
+        return Product.find({ owner: userId });
+    },
 };
 
 // Exporting the product Service:

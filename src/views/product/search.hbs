@@ -1,13 +1,17 @@
 <header>
-    <h1>Our Products</h1>
-    <p>Explore the world of pet happiness at Zoodora.</p>
+    <h1>Search Zoodora</h1>
 </header>
 
 <div class="content">
-    <h2 class="section-title">Top Picks for Your Pet:</h2>
+    <div class="search-bar">
+        <input type="text" placeholder="Search for food, toys..." />
+        <button class="btn">Search</button>
+    </div>
+
+    <h2 class="section-title">Search Results:</h2>
 
     <div class="feature-box">
-        {{#each products}}
+        {{#if products}}
         <div class="feature">
             <img src="{{imageUrl}}" alt="{{name}}">
             <h3>{{name}}</h3>
@@ -15,7 +19,7 @@
             <a href="/products/{{_id}}/details" class="btn">Read More</a>
         </div>
         {{else}}
-        <h2 class="section-title">No Products Available yet.</h2>
-        {{/each}}
+        <h2 class="section-title">No Search Results.</h2>
+        {{/if}}
     </div>
 </div>

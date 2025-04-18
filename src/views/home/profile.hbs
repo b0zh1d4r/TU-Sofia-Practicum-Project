@@ -1,0 +1,28 @@
+<header>
+    <h1>User Profile</h1>
+</header>
+
+<div class="content">
+    <section class="user-info">
+        <h2 class="section-title">Account Info:</h2>
+        <p><strong>Username:</strong> <span class="highlight">{{user.username}}</span></p>
+        <p><strong>Email:</strong> <span class="highlight">{{user.email}}</span></p>
+        <p><strong>Phone Number:</strong> <span class="highlight">{{user.phoneNumber}}</span></p>
+    </section>
+
+    <section class="product-listing">
+        <h2 class="section-title">Your Listed Products:</h2>
+        <div class="products">
+            {{#each createdProducts}}
+            <div class="product-card">
+                <img src="{{imageUrl}}" alt="{{name}}">
+                <h3>{{name}}</h3>
+                <p class="price">${{price}}</p>
+                <a href="/products/{{_id}}/details" class="readMore-btn">Read More</a>
+            </div>
+            {{else}}
+            <h2 class="section-title">You Have no Created Listings yet!</h2>
+            {{/each}}
+        </div>
+    </section>
+</div>

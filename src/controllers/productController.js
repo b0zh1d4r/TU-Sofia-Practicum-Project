@@ -3,6 +3,7 @@ import { Router } from "express";
 import productService from "../services/productService.js";
 import { getErrorMessage } from "../utils/errorUtils.js";
 import { isAuth } from "../middlewares/authMiddleware.js";
+import Product from "../models/Product.js";
 
 // Creating the product controller:
 const productController = Router();
@@ -31,7 +32,7 @@ productController.post('/create', isAuth, async (req, res) => {
         const error = getErrorMessage(err);
         const productCategoryData = getProductCategoryTypeData(productData);
 
-        return res.render('product/create', { product: productData, productCategories: productCategoryData, error });
+        return res.render('product/create', { product: productData, productCategory: productCategoryData, error });
     }
 });
 
@@ -40,17 +41,14 @@ productController.get('/:productId/details', async (req, res) => {
     const isOwner = product.owner.toString() === req.user?._id;
     const hasBought = product.buyList?.some(userId => userId.toString() === req.user?._id);
 
-
     res.render('product/details', { title: 'Details Page', product, isOwner, hasBought });
 });
 
 productController.get('/:productId/buy', isAuth, async (req, res) => {
     const productId = req.params.productId;
     const userId = req.user._id;
-    const product = await productService.getOne(productId);
-    const isOwner = product.owner.toString() === userId;
 
-    if (!isOwner) {
+    if (isProductOwner(productId, userId)) {
         return res.redirect(`/404`);
     }
 
@@ -64,22 +62,27 @@ productController.get('/:productId/buy', isAuth, async (req, res) => {
 });
 
 productController.get('/:productId/delete', isAuth, async (req, res) => {
-    const productId = req.params.productId;
+    if (!isProductOwner(req.params.productId, req.user?._id)) {
+        return res.redirect(`/404`);
+    }
 
     try {
-        await productService.remove(productId);
+        await productService.remove(req.params.productId);
 
         res.redirect('/products');
     } catch (err) {
         console.log(err);
-
-        res.redirect(`/products/${productId}/details`);
     }
 });
 
 productController.get('/:productId/edit', isAuth,  async (req, res) => {
     const product = await productService.getOne(req.params.productId).lean();
     const productCategory = getProductCategoryTypeData(product);
+    const isOwner = product.owner.toString() === req.user?._id;
+
+    if (!isOwner) {
+        return res.redirect('/404');
+    }
 
     res.render('product/edit', { title: 'Edit Page', product, productCategory });
 });
@@ -87,6 +90,10 @@ productController.get('/:productId/edit', isAuth,  async (req, res) => {
 productController.post('/:productId/edit', isAuth, async (req, res) => {
     const productId = req.params.productId;
     const productData = req.body;
+
+    if (!isProductOwner(productId, req.user?._id)) {
+        return res.redirect('/404');
+    }
 
     try {
         await productService.edit(productId, productData);
@@ -99,9 +106,6 @@ productController.post('/:productId/edit', isAuth, async (req, res) => {
         res.render('product/edit', { title: 'Edit Page', product: productData, productCategory, error });
     }
 });
-
-// Exporting the product controller:
-export default productController;
 
 // Creating a function that is listing product categories:
 function getProductCategoryTypeData({ productCategory }) {
@@ -118,6 +122,12 @@ function getProductCategoryTypeData({ productCategory }) {
 }
 
 // Creating a function/helper middleware:
-function productOwnershipMiddleware(req, res, next) {
-    const isOwner = req.user?._id ===
+async function isProductOwner(productId, userId) {
+    const product = await productService.getOne(productId);
+    const isOwner = product.owner.toString() === userId;
+
+    return isOwner;
 }
+
+// Exporting the product controller:
+export default productController;
