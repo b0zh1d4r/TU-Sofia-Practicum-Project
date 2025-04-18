@@ -38,8 +38,9 @@ header h1 {
 }
 
 .feature {
-    flex: 1 1 calc(33.333% - 30px);
-    max-width: calc(33.333% - 30px);
+    flex: 1 1 300px;
+    min-width: 280px;
+    max-width: 100%;
     background-color: #f4f4f4;
     border-radius: 12px;
     padding: 25px;

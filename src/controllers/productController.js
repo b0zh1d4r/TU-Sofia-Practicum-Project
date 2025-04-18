@@ -2,6 +2,7 @@
 import { Router } from "express";
 import productService from "../services/productService.js";
 import { getErrorMessage } from "../utils/errorUtils.js";
+import { isAuth } from "../middlewares/authMiddleware.js";
 
 // Creating the product controller:
 const productController = Router();
@@ -14,12 +15,12 @@ productController.get('/', async (req, res) => {
     res.render('product', { title: 'Products Page', products });
 });
 
-productController.get('/create', (req, res) => {
-    const productCategoryData = getProductCategoryTypeData({});
-    res.render('product/create', { title: 'Create Page', productCategories: productCategoryData });
+productController.get('/create', isAuth, (req, res) => {
+    const productCategory = getProductCategoryTypeData({});
+    res.render('product/create', { title: 'Create Page', productCategory });
 });
 
-productController.post('/create', async (req, res) => {
+productController.post('/create', isAuth, async (req, res) => {
     const productData = req.body;
     const userId = req.user._id;
 
@@ -43,9 +44,15 @@ productController.get('/:productId/details', async (req, res) => {
     res.render('product/details', { title: 'Details Page', product, isOwner, hasBought });
 });
 
-productController.get('/:productId/buy', async (req, res) => {
+productController.get('/:productId/buy', isAuth, async (req, res) => {
     const productId = req.params.productId;
     const userId = req.user._id;
+    const product = await productService.getOne(productId);
+    const isOwner = product.owner.toString() === userId;
+
+    if (!isOwner) {
+        return res.redirect(`/404`);
+    }
 
     try {
         await productService.buy(productId, userId);
@@ -56,7 +63,7 @@ productController.get('/:productId/buy', async (req, res) => {
     }
 });
 
-productController.get('/:productId/delete', async (req, res) => {
+productController.get('/:productId/delete', isAuth, async (req, res) => {
     const productId = req.params.productId;
 
     try {
@@ -65,8 +72,31 @@ productController.get('/:productId/delete', async (req, res) => {
         res.redirect('/products');
     } catch (err) {
         console.log(err);
+
+        res.redirect(`/products/${productId}/details`);
+    }
+});
+
+productController.get('/:productId/edit', isAuth,  async (req, res) => {
+    const product = await productService.getOne(req.params.productId).lean();
+    const productCategory = getProductCategoryTypeData(product);
+
+    res.render('product/edit', { title: 'Edit Page', product, productCategory });
+});
+
+productController.post('/:productId/edit', isAuth, async (req, res) => {
+    const productId = req.params.productId;
+    const productData = req.body;
+
+    try {
+        await productService.edit(productId, productData);
         
         res.redirect(`/products/${productId}/details`);
+    } catch (err) {
+        const productCategory = getProductCategoryTypeData(productData);
+        const error = getErrorMessage(err);
+
+        res.render('product/edit', { title: 'Edit Page', product: productData, productCategory, error });
     }
 });
 
@@ -85,4 +115,9 @@ function getProductCategoryTypeData({ productCategory }) {
 
     const viewData = productCategories.map(type => ({ value: type, label: type, selected: productCategory === type ? 'selected' : '' }));
     return viewData;
+}
+
+// Creating a function/helper middleware:
+function productOwnershipMiddleware(req, res, next) {
+    const isOwner = req.user?._id ===
 }

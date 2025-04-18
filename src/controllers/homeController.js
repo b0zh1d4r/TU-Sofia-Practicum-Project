@@ -1,12 +1,15 @@
-// Module importing Router:
+// Module importing:
 import { Router } from 'express';
+import productService from '../services/productService.js';
 
 // Creating homeController (router):
 const homeController = Router();
 
 // Setting the homeController:
-homeController.get('/', (req, res) => {
-    res.render('home', { title: 'Home Page' });
+homeController.get('/', async (req, res) => {
+    const products = await productService.getAll().lean();
+    const latestProducts = products.slice(-3).reverse();
+    res.render('home', { title: 'Home Page', latestProducts });
 });
 
 homeController.get('/authorized', (req, res) => {

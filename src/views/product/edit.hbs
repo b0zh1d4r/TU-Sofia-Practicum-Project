@@ -1,0 +1,27 @@
+<header>
+    <h1>Edit Product Listing</h1>
+</header>
+
+<div class="content">
+    <h2 class="section-title">Update Your Pet Product:</h2>
+    <form method="POST">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter product name" value="{{product.name}}" required>
+
+        <label for="category">Category:</label>
+        <select id="category" name="productCategory" required>
+            {{>productCategorySelect}}
+        </select>
+
+        <label for="price">Price (USD):</label>
+        <input type="number" id="price" name="price" placeholder="Enter product price" value="{{product.price}}" required>
+
+        <label for="imageUrl">Image URL:</label>
+        <input type="url" id="imageUrlv" name="imageUrl" placeholder="Enter image URL" value="{{product.imageUrl}}" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" placeholder="Enter product description" required>{{product.description}}</textarea>
+
+        <button type="submit">Update Product</button>
+    </form>
+</div>

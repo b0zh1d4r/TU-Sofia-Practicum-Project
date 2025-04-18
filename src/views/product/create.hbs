@@ -10,9 +10,7 @@
 
         <label for="category">Category:</label>
         <select id="category" name="productCategory">
-            {{#each productCategories}}
-            <option value="{{value}}" {{selected}}>{{label}}</option>
-            {{/each}}
+            {{>productCategorySelect}}
         </select>
 
         <label for="price">Price (USD):</label>
@@ -22,7 +20,7 @@
         <input type="text" id="imageUrl" name="imageUrl" placeholder="Enter image URL" value={{product.imageUrl}}>
 
         <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" placeholder="Enter product description" value={{product.description}}></textarea>
+        <textarea id="description" name="description" rows="4" placeholder="Enter product description">{{product.description}}</textarea>
 
         <button type="submit">Create Product</button>
     </form>
