@@ -3,13 +3,12 @@
     <p>Explore the world of pet happiness at Zoodora.</p>
 </header>
 
-<div class="content">
-    <h2 class="section-title">Top Picks for Your Pet:</h2>
-
-    <div class="feature-box">
+<section class="products">
+    <h2 class="section-title">All Our Products For Your Pet:</h2>
+    <div class="product-list">
         {{#each products}}
-        <div class="feature">
-            <img src="{{imageUrl}}" alt="{{name}}">
+        <div class="product-card">
+            <img src="{{imageUrl}}" alt="{{name}}" />
             <h3>{{name}}</h3>
             <p class="price">${{price}}</p>
             <a href="/products/{{_id}}/details" class="btn">Read More</a>
@@ -18,4 +17,4 @@
         <h2 class="section-title">No Products Available yet.</h2>
         {{/each}}
     </div>
-</div>
+</section>
