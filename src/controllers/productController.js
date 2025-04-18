@@ -3,7 +3,6 @@ import { Router } from "express";
 import productService from "../services/productService.js";
 import { getErrorMessage } from "../utils/errorUtils.js";
 import { isAuth } from "../middlewares/authMiddleware.js";
-import Product from "../models/Product.js";
 
 // Creating the product controller:
 const productController = Router();
@@ -53,9 +52,9 @@ productController.get('/:productId/details', async (req, res) => {
 
 productController.get('/:productId/buy', isAuth, async (req, res) => {
     const productId = req.params.productId;
-    const userId = req.user._id;
+    const userId = req.user._id;    
 
-    if (isProductOwner(productId, userId)) {
+    if (await isProductOwner(productId, userId)) {
         return res.redirect(`/404`);
     }
 
