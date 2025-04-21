@@ -40,6 +40,17 @@ Since this project utilizes cookies for authentication, you need to create a `.e
 
 3. Ensure that the server is able to read environment variables by using the `dotenv` package (which should already be included in the server dependencies).
 
+### **MongoDB Setup:**
+
+1. Make sure you have MongoDB installed and running locally, or set up a free cluster via [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+2. If using a local MongoDB server, the default connection URI is:
+
+    ```bash
+    mongodb://localhost:27017/zoodora
+    ```
+
+3. Create a database named `zoodora` and define your collections as needed (e.g., `users`, `products`).
+
 ## 🏃 Running:
 
 ### **Server:**
