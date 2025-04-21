@@ -46,10 +46,10 @@ Since this project utilizes cookies for authentication, you need to create a `.e
 2. If using a local MongoDB server, the default connection URI is:
 
     ```bash
-    mongodb://localhost:27017/zoodora
+    mongodb://localhost:27017/Zoodora
     ```
 
-3. Create a database named `zoodora` and define your collections as needed (e.g., `users`, `products`).
+3. Create a database named `Zoodora` and define your collections as needed (e.g., `users`, `products`).
 
 ## 🏃 Running:
 
